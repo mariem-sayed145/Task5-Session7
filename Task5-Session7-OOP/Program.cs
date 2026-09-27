@@ -136,12 +136,90 @@ namespace Task5_Session7_OOP
             Console.WriteLine("--------------------------------------------------------------------------------");
 
             // 8 -  Q8 
+
             // If we remove virtual from Person.Display(),
             // Doctor.Display() and Engineer.Display() cannot use override.
             // The compiler gives an error because Display() in the base class
             // is not virtual, abstract, or override.
             // This means the derived classes cannot override this method
             // and polymorphism through Display() will not work.
+
+
+            //  Part 2 --> Interface
+            Car car = new Car();
+            car.MoveForward();
+            car.MoveBackward();
+
+            Console.WriteLine("--------------------------------------------------------------------------------");
+
+            Ship ship = new Ship();
+
+            ship.MoveForward();
+            ship.MoveBackward();
+
+            Console.WriteLine("--------------------------------------------------------------------------------");
+
+            Airplane airplane = new Airplane();
+
+            airplane.MoveForward();
+            airplane.MoveBackward();
+            airplane.MoveUp();
+            airplane.MoveDown();
+
+            Console.WriteLine("--------------------------------------------------------------------------------");
+
+            IMoveable carRef = new Car();
+
+            carRef.MoveForward();
+            carRef.MoveBackward();
+
+            Console.WriteLine("--------------------------------------------------------------------------------");
+
+            IMoveable planeRef = new Airplane();
+
+            planeRef.MoveForward();
+            planeRef.MoveBackward();
+
+            Console.WriteLine("--------------------------------------------------------------------------------");
+
+            // 12 -  Can you call MoveUp() on planeRef? Why or why not? What reference type would you need? 
+
+            // planeRef.MoveUp();
+            // Cannot call MoveUp() because the reference type is IMoveable.
+            // IMoveable only contains MoveForward() and MoveBackward().
+            // To call MoveUp(), we need an IFlyable reference or an Airplane reference.
+
+            // 13 - What is the benefit of an interface inheriting other interfaces
+
+            // It allows one interface to combine the contracts of multiple interfaces,
+            // so implementing IVehicle requires implementing all inherited members.
+
+            // 14 -
+
+            // MoveForward() is not accessible directly through a Ship object.
+            // It can only be called through an IMoveable reference. 
+            // Explicit interface implementation can only be accessed
+            // through an interface reference.
+
+            IMoveable shipRef = new Ship();
+            shipRef.MoveForward();
+
+
+            // Q15. Comparison between Static Binding and Dynamic Binding:
+
+            // Feature                         Static Binding (new)       Dynamic Binding (override)
+
+            // Keyword in base                None                       virtual
+            // Keyword in derived             new                        override
+            // Resolved at                    Compile time               Runtime
+            // Behavior via base reference    Calls base method          Calls derived method 
+
+
+            // 16 - 
+            // override replaces the base method, so the base method must be virtual.
+            // new only hides the base method, so it does not require virtual.
+
+
         }
     }
 }
